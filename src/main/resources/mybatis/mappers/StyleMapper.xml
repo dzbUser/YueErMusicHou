@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yueer.etc.mapper.StyleMapper" >
+  <resultMap id="BaseResultMap" type="com.yueer.etc.pojo.Style"  autoMapping="true">
+    <id column="Stid" property="stid" jdbcType="INTEGER" />
+    <result column="Style" property="style" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Stid, Style
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from style_table
+    where Stid = #{stid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from style_table
+    where Stid = #{stid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yueer.etc.pojo.Style" >
+    insert into style_table (Stid, Style)
+    values (#{stid,jdbcType=INTEGER}, #{style,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yueer.etc.pojo.Style" >
+    insert into style_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stid != null" >
+        Stid,
+      </if>
+      <if test="style != null" >
+        Style,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stid != null" >
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="style != null" >
+        #{style,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yueer.etc.pojo.Style" >
+    update style_table
+    <set >
+      <if test="style != null" >
+        Style = #{style,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Stid = #{stid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yueer.etc.pojo.Style" >
+    update style_table
+    set Style = #{style,jdbcType=VARCHAR}
+    where Stid = #{stid,jdbcType=INTEGER}
+  </update>
+</mapper>
