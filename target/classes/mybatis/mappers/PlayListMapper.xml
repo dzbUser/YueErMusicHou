@@ -3,10 +3,132 @@
 <mapper namespace="com.yueer.etc.mapper.PlayListMapper" >
   <resultMap id="BaseResultMap" type="com.yueer.etc.pojo.PlayList" autoMapping="true" >
     <id column="Lid" property="lid" jdbcType="INTEGER" />
+    
   </resultMap>
-
-	<select id="hotPlayList" parameterType="playList" resultType="playList">
-		SELECT * FROM playList_table  ORDER BY playNum DESC LIMIT 10
+  
+  <!-- 获取所有属性包括list -->
+  <resultMap id="GetAll" type="com.yueer.etc.pojo.PlayList" autoMapping="true">
+  	<id column="Lid" property="lid" jdbcType="INTEGER" />
+  	<!-- 一对多 歌单音乐 -->
+  	<collection property="musics" javaType="List" ofType="music" autoMapping="true">
+  		<id column="Mid" property="mid" />
+  		<result property="playnum" column="playnum1"/>
+  	</collection>
+  	<!-- 一对多 歌单评论 -->
+  	<collection property="comments" javaType="List" ofType="comment" autoMapping="true">
+  		<id column="Cid" property="cid" />
+  	</collection>
+  </resultMap>
+  
+	<select id="hotPlayList"  resultType="playList">
+		SELECT * FROM playList_table
+		 <if test="_parameter != null" >
+		 		WHERE stid=#{stid}
+		 </if>
+		ORDER BY playNum DESC LIMIT 10
+	</select>
+	
+	<!-- 获取所有属性 -->
+	<select id="getAll"  resultType="playList">
+		 SELECT *
+		 FROM playlist_table 
+		 WHERE Lid=#{lid}
+	</select>
+	
+	<!-- 判断用户是否收藏歌单 -->
+	<select id="ifCollection"  resultType="java.lang.Integer">
+		SELECT lid from user_list_table WHERE lid = #{0} AND uid = #{1}
+	</select>
+	
+	<!-- 歌单页面的获取歌单按照播放量-->
+	<select id="getPlayListByHot" resultType="playList">
+		SELECT * FROM playList_table
+		 <if test="_parameter != null" >
+		 		WHERE stid=#{stid}
+		 </if>
+		  ORDER BY playNum DESC
+	</select>
+	
+	<!-- 歌单页面的获取歌单按照上传时间-->
+	<select id="getPlayListByTime" resultType="playList">
+		SELECT * FROM playList_table
+		 <if test="_parameter != null" >
+		 		WHERE stid=#{stid}
+		 </if>
+		  ORDER BY publish_time DESC
+	</select>
+	
+	<!-- 获取用户创建歌单 -->
+	<!-- 获取用户创建歌单 -->
+	<select id="getCreateByUid"   resultType="playList">
+			SELECT *  FROM playList_table WHERE uid=#{uid}
+	</select>
+	
+	<!-- 获取用户收藏歌单 -->
+	<select id="getCollectionByUid"   resultType="playList">
+			SELECT  p.*  FROM playList_table p,user_list_table ul  WHERE ul.uid=#{uid} AND p.lid=ul.lid
+	</select>
+	
+	<!-- 搜索歌曲 -->
+	<select id="searchPlayList"   resultType="playList">
+			SELECT *  FROM playList_table WHERE Lname LIKE "%"#{lname}"%" ORDER BY playNum DESC LIMIT 3
+	</select>
+	
+	<!-- 获取专辑 -->
+	<select id="getAlbumPlayList"   resultType="playList">
+			SELECT *  FROM playList_table WHERE uid=#{uid} AND Isalbum=1
+	</select>
+	
+	
+	<!-- 获取飙升排行榜 -->
+	<select id="getBiaoShen" resultType="playList">
+		 SELECT *
+		 FROM playlist_table  
+		 WHERE Lid=#{lid} 
+	</select>
+	
+	<!-- 获取新歌榜 -->
+	<select id="getXinge" resultType="playList">
+		 SELECT  *
+		 FROM playlist_table  
+		 WHERE Lid=#{lid} 
+	</select>
+	
+	<!-- 获取某个风格的排行榜 -->
+	<select id="getFengge"  resultType="playList">
+		 SELECT *
+		 FROM playlist_table 
+		 WHERE Lid=#{lid} 
+	</select>
+	
+	<!-- 获取歌单评论 -->
+	<select id="getCommentByLid"   resultType="comment">
+			SELECT *  FROM comment_table  WHERE ctype=1 AND lid=#{lid}
+	</select>
+	
+	<!-- 获取飙升榜的歌曲 -->
+	<select id="getMusicByLid"   resultType="music">
+			SELECT  m.*  FROM music_table  m,musiclist_table ml  WHERE ml.lid=#{lid} AND m.mid=ml.mid
+	</select>
+	
+	
+	<!-- 获取飙升榜的歌曲 -->
+	<select id="getBiaoShenMusic"   resultType="music">
+			SELECT *  FROM music_table   ORDER BY weekplay DESC LIMIT 100
+	</select>
+	
+	<!-- 获取新歌榜的歌曲 -->
+	<select id="getXingeMusic"   resultType="music">
+			SELECT *  FROM music_table   
+			<if test="date != null">
+		 	 WHERE  uptime >= #{date}
+			 </if>
+			ORDER BY playnum DESC LIMIT 100
+	</select>
+	
+	<!-- 获取某个风格榜的歌曲 -->
+	<select id="getFenggeMusic"   resultType="music">
+			SELECT *  FROM music_table  WHERE stid=#{stid} ORDER BY playnum DESC LIMIT 100
 	</select>
 	
 </mapper>

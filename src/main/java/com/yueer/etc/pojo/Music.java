@@ -16,8 +16,9 @@ public class Music  implements Serializable{
 
     private Integer length;
 
+    //歌曲路径
     private String path;
-
+    //图片路径
     private String image;
 
     private Date uptime;
@@ -28,7 +29,7 @@ public class Music  implements Serializable{
 
     private Integer weekplay;
 
-    private String textpath;
+    private String lyr;
 
     public Integer getMid() {
         return mid;
@@ -103,11 +104,11 @@ public class Music  implements Serializable{
         this.weekplay = weekplay;
     }
 
-    public String getTextpath() {
-        return textpath;
+    public String getLyr() {
+        return lyr;
     }
 
-    public void setTextpath(String textpath) {
-        this.textpath = textpath == null ? null : textpath.trim();
+    public void setLyr(String lyr) {
+        this.lyr = lyr == null ? null : lyr.trim();
     }
 }

@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:10:36:22 +0800] "GET /ssm/user/1 HTTP/1.1" 200 177 http-bio-8080-exec-1 1214
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:10:36:22 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:10:36:43 +0800] "GET /ssm/playList/hotPlayList HTTP/1.1" 200 133 http-bio-8080-exec-5 153
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:11:08:39 +0800] "GET /ssm/playList/getAll/1 HTTP/1.1" 500 6613 http-bio-8080-exec-1 577
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:11:14:05 +0800] "GET /ssm/playList/getAll/1 HTTP/1.1" 200 12 http-bio-8080-exec-1 811
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:11:43:14 +0800] "GET /ssm/playList/getAll/1 HTTP/1.1" 200 261 http-bio-8080-exec-5 230
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:14:27:11 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-7 0
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:14:33:50 +0800] "GET /ssm/playList/getAll/1 HTTP/1.1" 200 261 http-bio-8080-exec-9 399
+0:0:0:0:0:0:0:1 - - [06/Jan/2018:14:33:50 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-9 0
+127.0.0.1 - - [06/Jan/2018:14:36:16 +0800] "POST /ssm/user/show1 HTTP/1.1" 405 1047 http-bio-8080-exec-2 241

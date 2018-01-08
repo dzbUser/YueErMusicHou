@@ -2,6 +2,7 @@ package com.yueer.etc.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class PlayList  implements Serializable{
 
@@ -22,6 +23,10 @@ public class PlayList  implements Serializable{
     private Integer isalbum;
 
     private String liamge;
+    
+    private List<Music> musics;
+    
+    private List<Comment> comments;
 
     public Integer getLid() {
         return lid;
@@ -87,4 +92,20 @@ public class PlayList  implements Serializable{
     public void setLiamge(String liamge) {
         this.liamge = liamge == null ? null : liamge.trim();
     }
+
+	public List<Music> getMusics() {
+		return musics;
+	}
+
+	public void setMusics(List<Music> musics) {
+		this.musics = musics;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 }
