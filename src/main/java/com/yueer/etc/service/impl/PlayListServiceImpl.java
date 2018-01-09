@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yueer.etc.mapper.PlayListMapper;
+import com.yueer.etc.pojo.Comment;
 import com.yueer.etc.pojo.PlayList;
 import com.yueer.etc.service.PlayListService;
 
@@ -34,7 +37,6 @@ public class PlayListServiceImpl implements PlayListService{
 		// TODO Auto-generated method stub
 		PlayList list = playListMapper.getAll(lid);
 		list.setMusics(playListMapper.getMusicByLid(lid));
-		list.setComments(playListMapper.getCommentByLid(lid));
 		return list;
 	}
 	
@@ -49,12 +51,18 @@ public class PlayListServiceImpl implements PlayListService{
 	}
 
 	//获取全部歌单某个风格的歌单
-	public List<PlayList> getPlayList(Integer stid, Boolean hot) {
+	public PageInfo<PlayList> getPlayList(Integer stid, Boolean hot,Integer page) {
 		// TODO Auto-generated method stub
 		if(hot){
-			return playListMapper.getPlayListByHot(stid);
+			PageHelper.startPage(page,12);
+			PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playListMapper.getPlayListByHot(stid));
+//			System.out.println(pageInfo);
+			return pageInfo;
 		}
-		return playListMapper.getPlayListByTime(stid);
+		PageHelper.startPage(page, 12);
+		PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playListMapper.getPlayListByTime(stid));
+//		System.out.println(pageInfo);
+		return pageInfo;
 	}
 
 	//获取用户创建的歌单
@@ -91,7 +99,6 @@ public class PlayListServiceImpl implements PlayListService{
 		// TODO Auto-generated method stub
 		PlayList list = playListMapper.getBiaoShen(lid);
 		list.setMusics(playListMapper.getBiaoShenMusic());
-		list.setComments(playListMapper.getCommentByLid(lid));
 		return list;
 	}
 
@@ -108,7 +115,6 @@ public class PlayListServiceImpl implements PlayListService{
         
 		PlayList list = playListMapper.getXinge(lid);
 		list.setMusics(playListMapper.getXingeMusic(str));
-		list.setComments(playListMapper.getCommentByLid(lid));
 		return list;
 	}
 
@@ -116,10 +122,17 @@ public class PlayListServiceImpl implements PlayListService{
 	@Override
 	public PlayList getFengge(Integer lid, Integer stid) {
 		// TODO Auto-generated method stub
-		PlayList list = playListMapper.getFengge(lid, stid);
+		PlayList list = playListMapper.getFengge(lid);
 		list.setMusics(playListMapper.getFenggeMusic(stid));
-		list.setComments(playListMapper.getCommentByLid(lid));
 		return list;
+	}
+	
+	//获取某个歌单的评论
+	public  PageInfo<Comment> getComment(Integer lid,Integer page){
+		PageHelper.startPage(page,10);
+		PageInfo<Comment> pageInfo = new PageInfo<Comment>(playListMapper.getCommentByLid(lid));
+//		System.out.println(pageInfo);
+		return pageInfo;
 	}
 
 }

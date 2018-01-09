@@ -2,6 +2,8 @@ package com.yueer.etc.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import com.yueer.etc.pojo.Comment;
 import com.yueer.etc.pojo.PlayList;
 /**
  * 歌单业务管理接口
@@ -19,7 +21,7 @@ public interface PlayListService {
 	public Boolean ifCollection(Integer lid,Integer uid);
 	
 	//获取全部歌单或者风格歌单
-	public List<PlayList> getPlayList(Integer stid, Boolean hot);
+	public PageInfo<PlayList> getPlayList(Integer stid, Boolean hot,Integer page);
 	
 	//获取用户创建的歌单
 	public List<PlayList> getCreateByUid(Integer uid);
@@ -41,4 +43,7 @@ public interface PlayListService {
 	
 	//获取某个风格的排行榜
 	public PlayList getFengge(Integer lid,Integer stid);
+	
+	//获取某个歌单的评论
+	public  PageInfo<Comment> getComment(Integer lid,Integer page);
 }

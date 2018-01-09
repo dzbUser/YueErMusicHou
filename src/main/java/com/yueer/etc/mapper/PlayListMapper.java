@@ -47,7 +47,7 @@ public interface PlayListMapper {
 	public PlayList getXinge(@Param("lid")Integer lid);
 	
 	//获取风格榜的歌单和歌曲
-	public PlayList getFengge(@Param("lid")Integer lid,@Param("stid")Integer stid);
+	public PlayList getFengge(@Param("lid")Integer lid);
 	
 	//获取某个歌单评论
 	public List<Comment> getCommentByLid(Integer lid);
@@ -63,4 +63,5 @@ public interface PlayListMapper {
 	
 	//获取风格榜的歌曲
 	public List<Music> getFenggeMusic(@Param("stid")Integer stid);
+	
 	}

@@ -26,7 +26,7 @@ public class PlayList  implements Serializable{
     
     private List<Music> musics;
     
-    private List<Comment> comments;
+//    private List<Comment> comments;
 
     public Integer getLid() {
         return lid;
@@ -101,11 +101,11 @@ public class PlayList  implements Serializable{
 		this.musics = musics;
 	}
 
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
+//	public List<Comment> getComments() {
+//		return comments;
+//	}
+//
+//	public void setComments(List<Comment> comments) {
+//		this.comments = comments;
+//	}
 }

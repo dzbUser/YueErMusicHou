@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.yueer.etc.pojo.Comment;
 import com.yueer.etc.pojo.PlayList;
 import com.yueer.etc.service.PlayListService;
 
@@ -54,9 +57,11 @@ public class PlayListController {
 		//获取全部歌单某个风格的歌单
 		@RequestMapping("getPlayList")
 		@ResponseBody
-		public List<PlayList> getPlayList(Integer stid,Boolean hot){
+		public PageInfo<PlayList> getPlayList(Integer stid,Boolean hot,Integer page){
 			System.out.println(stid);
-			List<PlayList> playLists = playListService.getPlayList(stid,hot);
+			PageInfo<PlayList> playLists = playListService.getPlayList(stid,hot,page);
+//			PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playLists);
+//			System.out.println(pageInfo);
 			return playLists;
 		}
 		
@@ -119,6 +124,17 @@ public class PlayListController {
 		public PlayList getFengge(Integer stid){
 			PlayList playLists = playListService.getFengge(3, stid);
 			return playLists;
+		}
+		
+		@RequestMapping(""
+				+ "")
+		@ResponseBody
+		public PageInfo<Comment> getCommentByLid(Integer lid,Integer page){
+			System.out.println(lid);
+			PageInfo<Comment> lists = playListService.getComment(lid, page);
+//			PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playLists);
+//			System.out.println(pageInfo);
+			return lists;
 		}
 		
 }
