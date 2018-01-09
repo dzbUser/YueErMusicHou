@@ -12,6 +12,7 @@ public class Comment  implements Serializable{
 	private String content;
 	private Integer ctype;
 	private Date time;
+	private String name;
 	public Integer getCid() {
 		return cid;
 	}
@@ -39,6 +40,12 @@ public class Comment  implements Serializable{
 	@Override
 	public String toString() {
 		return "Comment [cid=" + cid + ", content=" + content + ", ctype=" + ctype + ", time=" + time + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

@@ -90,12 +90,12 @@
 	
 	<!-- 获取歌单评论 -->
 	<select id="getCommentByLid"   resultType="comment">
-			SELECT *  FROM comment_table  WHERE ctype=1 AND lid=#{lid}
+			SELECT c.*,u.name  FROM comment_table c,user_table u  WHERE ctype=1 AND lid=#{lid} AND u.uid=c.uid;
 	</select>
 	
 	<!-- 获取飙升榜的歌曲 -->
 	<select id="getMusicByLid"   resultType="music">
-			SELECT  m.*  FROM music_table  m,musiclist_table ml  WHERE ml.lid=#{lid} AND m.mid=ml.mid
+			SELECT  m.*,u.name  FROM music_table  m,musiclist_table ml ,user_table u WHERE ml.lid=#{lid} AND m.mid=ml.mid AND u.uid=m.sid
 	</select>
 	
 	

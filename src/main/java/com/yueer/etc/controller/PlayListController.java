@@ -126,8 +126,7 @@ public class PlayListController {
 			return playLists;
 		}
 		
-		@RequestMapping(""
-				+ "")
+		@RequestMapping("getCommentByLid")
 		@ResponseBody
 		public PageInfo<Comment> getCommentByLid(Integer lid,Integer page){
 			System.out.println(lid);

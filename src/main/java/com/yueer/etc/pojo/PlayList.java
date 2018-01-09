@@ -25,6 +25,10 @@ public class PlayList  implements Serializable{
     private String liamge;
     
     private List<Music> musics;
+   
+	private Integer stid;
+	
+	private String content;
     
 //    private List<Comment> comments;
 
@@ -99,6 +103,22 @@ public class PlayList  implements Serializable{
 
 	public void setMusics(List<Music> musics) {
 		this.musics = musics;
+	}
+
+	public Integer getStid() {
+		return stid;
+	}
+
+	public void setStid(Integer stid) {
+		this.stid = stid;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 //	public List<Comment> getComments() {

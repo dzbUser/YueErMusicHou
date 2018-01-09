@@ -30,6 +30,8 @@ public class Music  implements Serializable{
     private Integer weekplay;
 
     private String lyr;
+    
+    private String name;
 
     public Integer getMid() {
         return mid;
@@ -111,4 +113,12 @@ public class Music  implements Serializable{
     public void setLyr(String lyr) {
         this.lyr = lyr == null ? null : lyr.trim();
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }
