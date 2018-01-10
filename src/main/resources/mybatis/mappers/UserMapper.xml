@@ -9,5 +9,34 @@
 	<select id="queryUserById" resultType="user">
 		SELECT * FROM user_table where uid=#{uid}
 	</select>
+	<!-- 用户部分 -->
+	<select id="loginCheck" resultType="user">
+		SELECT * FROM user_table where username=#{0} and password=#{1}
+	</select>
+	<select id="usernameCheck" resultType="user">
+		SELECT * FROM user_table where username=#{username} 
+	</select>
+	<insert id="regist" parameterType="com.yueer.etc.pojo.User">
+		INSERT INTO user_table(username,password,name,sex,email) VALUES(#{username},#{password},#{name},#{sex},#{email})
+	</insert>
+	<select id="userimfByuid" resultType="user">
+		SELECT * FROM user_table where uid=#{uid} 
+	</select>
+	<update id="updateUserByuid" parameterType="com.yueer.etc.pojo.User">
+		UPDATE user_table SET name=#{name},content=#{content},sex=#{sex},birthday=#{birthday} WHERE uid=#{uid}
+	</update>
+	<select id="recommend" resultType="user">
+		SELECT * FROM user_table ORDER BY fans LIMIT 3
+	</select>
+	<!-- 歌手部分 -->
+	<select id="partliveSinger" resultType="user">
+		SELECT * FROM user_table where role=2 ORDER BY fans DESC LIMIT 8
+	</select>
+	<select id="hotSinger" resultType="user">
+		SELECT * FROM user_table where role=1 ORDER BY fans DESC
+	</select>
+	<select id="allLiveSinger" resultType="user">
+		SELECT * FROM user_table where role=2 
+	</select>
   
 </mapper>

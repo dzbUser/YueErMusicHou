@@ -32,6 +32,8 @@ public class PlayList  implements Serializable{
 	
 	private Integer uid;
 	
+	private String name;
+	
 	private User user;
     
 //    private List<Comment> comments;
@@ -139,6 +141,14 @@ public class PlayList  implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 //	public List<Comment> getComments() {

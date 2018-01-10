@@ -4,5 +4,15 @@
   <resultMap id="BaseResultMap" type="com.yueer.etc.pojo.Share"  autoMapping="true">
     <id column="Shareid" property="shareid" jdbcType="INTEGER" />
   </resultMap>
+  <insert id="addShare" parameterType="com.yueer.etc.pojo.Share">
+  	INSERT INTO share_table(Uid,Content,Likes,Music,Video,time) values(#{uid},#{content},#{likes},#{music},#{video},#{time})
+  </insert>
   
+  <select id="getAllShare" parameterType="share" resultType="share">
+	SELECT * FROM share_table   
+	</select>
+
+<update id="addLike" parameterType="com.yueer.etc.pojo.Share">
+	UPDATE share_table SET Likes=Likes+1 WHERE shareid=#{shareid}
+	</update>
 </mapper>

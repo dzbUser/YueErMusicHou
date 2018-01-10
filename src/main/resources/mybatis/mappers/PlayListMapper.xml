@@ -48,12 +48,12 @@
 	<!-- 获取用户创建歌单 -->
 	<!-- 获取用户创建歌单 -->
 	<select id="getCreateByUid"   resultType="playList">
-			SELECT *  FROM playList_table WHERE uid=#{uid}
+			SELECT *  FROM playList_table  WHERE uid=#{uid} 
 	</select>
 	
 	<!-- 获取用户收藏歌单 -->
 	<select id="getCollectionByUid"   resultType="playList">
-			SELECT  p.*  FROM playList_table p,user_list_table ul  WHERE ul.uid=#{uid} AND p.lid=ul.lid
+			SELECT  p.*,u.name  FROM playList_table p,user_list_table ul,user_table u  WHERE ul.uid=#{uid} AND p.lid=ul.lid AND u.uid=#{uid}
 	</select>
 	
 	<!-- 搜索歌曲 -->

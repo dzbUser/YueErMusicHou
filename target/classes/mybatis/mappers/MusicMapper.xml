@@ -9,5 +9,26 @@
 	<select id="hotMusic" parameterType="music" resultType="music">
 		SELECT * FROM music_table WHERE Stid=#{stid} ORDER BY playNum DESC LIMIT 18 
 	</select>
-	
+	<!-- 歌曲排行榜查询 -->
+	<select id="rankMusic1" parameterType="music" resultType="music">
+		SELECT * FROM music_table ORDER BY playnum DESC LIMIT 10  
+	</select>
+	<select id="rankMusic2" parameterType="music" resultType="music">
+		SELECT * FROM music_table ORDER BY collect DESC LIMIT 10  
+	</select>
+	<select id="rankMusic3" parameterType="music" resultType="music">
+		SELECT * FROM music_table ORDER BY weekplay DESC LIMIT 10  
+	</select>
+	<select id="rankMusic4" parameterType="music" resultType="music">
+		SELECT * FROM music_table WHERE uptime>'2018-01-06' ORDER BY playnum DESC LIMIT 10  
+	</select>
+	<select id="getInfo" parameterType="java.lang.Integer" resultType="music">
+		SELECT * FROM music_table WHERE MID=#{songid}
+	</select>
+	<select id="searchMusic" resultType="music">
+		SELECT * FROM music_table WHERE Mname like "%"#{mName}"%" LIMIT 3
+	</select>
+	<select id="singerHot" resultType="music">
+		SELECT * FROM music_table WHERE sid = #{id} ORDER BY playnum DESC LIMIT 50
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.yueer.etc.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Share  implements Serializable{
     /**
@@ -14,10 +15,20 @@ public class Share  implements Serializable{
 
     private String content;
 
-    private Integer like;
+    private Integer likes;
 
     private String video;
 
+    private Integer music;
+    
+    private User user;
+    
+    private Music musicMessage;
+    
+    private Date time;
+    
+
+    
     public Integer getShareid() {
         return shareid;
     }
@@ -42,12 +53,12 @@ public class Share  implements Serializable{
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getLike() {
-        return like;
+    public Integer getLikes() {
+        return likes;
     }
 
-    public void setLike(Integer like) {
-        this.like = like;
+    public void setLikes(Integer like) {
+        this.likes = like;
     }
 
     public String getVideo() {
@@ -57,4 +68,37 @@ public class Share  implements Serializable{
     public void setVideo(String video) {
         this.video = video == null ? null : video.trim();
     }
+
+	public Integer getMusic() {
+		return music;
+	}
+
+	public void setMusic(Integer music) {
+		this.music = music;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Music getMusicMessage() {
+		return musicMessage;
+	}
+
+	public void setMusicMessage(Music musicMessage) {
+		this.musicMessage = musicMessage;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
 }

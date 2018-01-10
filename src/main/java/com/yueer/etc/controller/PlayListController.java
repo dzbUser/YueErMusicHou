@@ -46,7 +46,7 @@ public class PlayListController {
 			return playLists;
 		}
 	
-		//用户是都收藏歌单
+		//用户是否收藏歌单
 		@RequestMapping("ifCollection")
 		@ResponseBody
 		public Boolean ifCollection(Integer lid,Integer uid){
@@ -74,7 +74,7 @@ public class PlayListController {
 			return playLists;
 		}
 		
-		//获取用户创建的歌单
+		//获取用户收藏的歌单
 		@RequestMapping("getCollectionByUid")
 		@ResponseBody
 		public List<PlayList> getCollectionByUid(Integer uid){

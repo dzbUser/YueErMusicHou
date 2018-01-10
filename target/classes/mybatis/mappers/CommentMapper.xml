@@ -5,5 +5,28 @@
     	  <id column="Cid" property="cid" jdbcType="INTEGER" />
   </resultMap>
 
-
+	<select id="getCommentBySid" parameterType="com.yueer.etc.pojo.Comment" resultType="com.yueer.etc.pojo.Comment">
+		SELECT * FROM comment_table WHERE Sid=#{sid}   
+	</select>
+	
+	<select id="getCommentByLid" parameterType="com.yueer.etc.pojo.Comment" resultType="com.yueer.etc.pojo.Comment">
+		SELECT * FROM comment_table WHERE Lid=#{lid}   
+	</select>
+	
+	<select id="getCommentByShid" parameterType="com.yueer.etc.pojo.Comment" resultType="com.yueer.etc.pojo.Comment">
+		SELECT * FROM comment_table WHERE Shid=#{shid}   
+	</select>
+	
+	<select id="getCommentByMid" parameterType="com.yueer.etc.pojo.Comment" resultType="com.yueer.etc.pojo.Comment">
+		SELECT * FROM comment_table WHERE Mid=#{mid}   
+	</select>
+	
+	<!-- <insert id="insert" parameterType="com.yueer.etc.pojo.Comment">
+		INSERT INTO comment_table(Uid,Content,Ctype,Time,Sid,Lid,Shid,Mid) 
+			values (#{comment.uid},#{comment.content},#{comment.ctype},#{comment.time},#{comment.sid},#{comment.lid},#{comment.Shid},#{comment.Mid})	
+	</insert> -->
+	<insert id="insert" parameterType="com.yueer.etc.pojo.Comment">
+		INSERT INTO comment_table(Uid,Content,Ctype,Time,Sid,Lid,Shid,Mid) 
+			values (#{uid},#{content},#{ctype},#{time},#{sid},#{lid},#{shid},#{mid})	
+	</insert>
 </mapper>
