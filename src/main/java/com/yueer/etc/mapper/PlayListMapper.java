@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.yueer.etc.pojo.Comment;
 import com.yueer.etc.pojo.Music;
 import com.yueer.etc.pojo.PlayList;
+import com.yueer.etc.pojo.User;
 /**
  * 歌单的mapper
  * @author dzb
@@ -64,4 +65,6 @@ public interface PlayListMapper {
 	//获取风格榜的歌曲
 	public List<Music> getFenggeMusic(@Param("stid")Integer stid);
 	
+	//获uid的获取user
+	public User getUserByUid(@Param("uid")Integer uid);
 	}

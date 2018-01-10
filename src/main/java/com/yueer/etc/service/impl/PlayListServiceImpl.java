@@ -37,6 +37,7 @@ public class PlayListServiceImpl implements PlayListService{
 		// TODO Auto-generated method stub
 		PlayList list = playListMapper.getAll(lid);
 		list.setMusics(playListMapper.getMusicByLid(lid));
+		list.setUser(playListMapper.getUserByUid(list.getUid()));
 		return list;
 	}
 	
@@ -55,12 +56,20 @@ public class PlayListServiceImpl implements PlayListService{
 		// TODO Auto-generated method stub
 		if(hot){
 			PageHelper.startPage(page,12);
-			PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playListMapper.getPlayListByHot(stid));
+			List<PlayList> list =playListMapper.getPlayListByHot(stid);
+			for(int i=0;i<list.size();i++){
+				list.get(i).setUser(playListMapper.getUserByUid(list.get(i).getUid()));
+			}
+			PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(list);
 //			System.out.println(pageInfo);
 			return pageInfo;
 		}
 		PageHelper.startPage(page, 12);
-		PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(playListMapper.getPlayListByTime(stid));
+		List<PlayList> list =playListMapper.getPlayListByHot(stid);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setUser(playListMapper.getUserByUid(list.get(i).getUid()));
+		}
+		PageInfo<PlayList> pageInfo = new PageInfo<PlayList>(list);
 //		System.out.println(pageInfo);
 		return pageInfo;
 	}

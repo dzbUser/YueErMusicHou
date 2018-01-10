@@ -118,4 +118,8 @@
 			SELECT *  FROM music_table  WHERE stid=#{stid} ORDER BY playnum DESC LIMIT 100
 	</select>
 	
+	<!-- 根据uid获取user -->
+	<select id="getUserByUid"   resultType="user">
+			SELECT *  FROM user_table  WHERE uid=#{uid} 
+	</select>
 </mapper>

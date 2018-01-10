@@ -29,6 +29,10 @@ public class PlayList  implements Serializable{
 	private Integer stid;
 	
 	private String content;
+	
+	private Integer uid;
+	
+	private User user;
     
 //    private List<Comment> comments;
 
@@ -119,6 +123,22 @@ public class PlayList  implements Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 //	public List<Comment> getComments() {
